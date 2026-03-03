@@ -432,5 +432,20 @@ button:hover{
         font-size: 28px;
     }
 }
+/* Empêcher les éléments de dépasser l'écran */
+* {
+  box-sizing: border-box;
+}
 
+img, video {
+  max-width: 100%;
+  height: auto;
+}
 
+/* Adapter la mise en page sur petit écran */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0 15px;
+  }
+}
