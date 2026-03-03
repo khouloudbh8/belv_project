@@ -10,12 +10,6 @@ background:#faf9f6;
 color:#2d3e50;
 line-height:1.6;
 }
-
-img, video {
-  max-width: 100%;
-  height: auto;
-}
-
 .grid{
 display:grid;
 grid-template-columns:repeat(40,1fr);
@@ -80,8 +74,9 @@ gap:40px;
      border-radius: 20px;
      background:rgba(0, 160, 166, 0.2);
     backdrop-filter: blur(2px);
-}
+    
 
+}
 button{
     grid-column: 16/ span 10;
     grid-row: 2;
@@ -125,6 +120,7 @@ button:hover{
     backdrop-filter: blur(2px);
     color: white;
     border-radius: 20px;
+    
 }
 .text-beat {
     display: inline-block; 
@@ -133,8 +129,12 @@ button:hover{
     font-weight: bold;
 }
 @keyframes beat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
 }
 
 .d1, .d2, .d3{
@@ -146,8 +146,14 @@ button:hover{
     border: 1px solid rgba(255,255,255,0.4);
     gap:1px;
 }
-.d1 h2, .d2 h2, .d3 h2{ margin-bottom: 2px; }
-.d1 p, .d2 p, .d3 p{ margin-top: 0; }
+.d1 h2, .d2 h2, .d3 h2{
+    margin-bottom: 2px;
+}
+
+.d1 p, .d2 p, .d3 p{
+    margin-top: 0;
+}
+
 
 .footer{
     grid-column: span 40;
@@ -166,6 +172,7 @@ button:hover{
 .footer-col h2{
     font-size:40px;
     margin-bottom:20px;
+   
 }
 
 .footer-col p{
@@ -174,25 +181,31 @@ button:hover{
     line-height:1.6;
 }
 
-.footer-col i{ margin-right:10px; }
-
+.footer-col i{
+    margin-right:10px;
+}
 .footer a{
     color: white;
     text-decoration: none;
 }
 .footer a:hover {
   color:#ff9900 !important; 
-  transform:scale(1.05);
+ transform:scale(1.05);
+
 }
 
-.about img{ margin-bottom:20px; }
-
+.about img{
+    margin-bottom:20px;
+}
 .copy-right{
     border-top:1px solid rgba(255,255,255,0.5);
     margin-top:60px;
     padding-top:30px;
     font-size:22px;
 }
+
+
+
 
 .actualites{
     grid-column: span 40;
@@ -208,7 +221,9 @@ button:hover{
     color:#222;
 }
 
-.titre-actu span{ color:#00A1A6; }
+.titre-actu span{
+    color:#00A1A6;
+}
 
 .sous-titre{
     margin-top:10px;
@@ -261,7 +276,14 @@ button:hover{
     color:#444;
 }
 
-.button{ margin-top:40px; }
+
+
+.button{
+    margin-top:40px;
+}
+
+
+
 
 .map-container{
     margin-top:60px;
@@ -269,204 +291,161 @@ button:hover{
     overflow:hidden;
 }
 
-/* ===========================
-   TABLET (max 992px)
-=========================== */
+
+
 @media screen and (max-width: 992px) {
     .grid {
         grid-template-columns: repeat(20, 1fr);
     }
-    .a, .a1, .a2, .a3 { grid-column: span 5; }
+    
+    .a, .a1, .a2, .a3 {
+        grid-column: span 5;
+    }
+    
     .navigation {
         grid-column: span 20;
         flex-direction: column;
         padding: 15px;
     }
+    
     .menu {
         flex-wrap: wrap;
         justify-content: center;
         gap: 20px;
     }
+    
     .c {
         grid-column: span 20;
         grid-template-columns: repeat(20, 1fr);
     }
+    
     .c1 {
         grid-column: 3/span 16;
         text-align: center;
     }
-    .c1 h1 span:first-child { font-size: 40px !important; }
-    button { grid-column: 6/span 10; }
-    .d1 { grid-column: 3/span 5; }
-    .d2 { grid-column: 9/span 5; }
-    .d3 { grid-column: 15/span 5; }
+    
+    .c1 h1 span:first-child {
+        font-size: 40px !important;
+    }
+    
+    button {
+        grid-column: 6/span 10;
+    }
+    
+    .d1 {
+        grid-column: 3/span 5;
+    }
+    
+    .d2 {
+        grid-column: 9/span 5;
+    }
+    
+    .d3 {
+        grid-column: 15/span 5;
+    }
+    
     .actualites {
         grid-column: span 20;
         padding: 60px 30px;
     }
+    
+    .actualites h1 {
+        font-size: 50px !important;
+    }
+    
     .footer {
         grid-column: span 20;
         padding: 50px 30px 30px 30px;
     }
+    
     .footer-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
     }
 }
 
-/* ===========================
-   MOBILE (max 768px)
-=========================== */
 @media screen and (max-width: 768px) {
-
-    /* Info bar en haut */
-    .a, .a1 { display: none; }
+    .a, .a1 {
+        display: none;
+    }
+    
     .a2, .a3 {
         grid-column: span 10;
-        font-size: 13px;
         justify-content: center;
     }
-
-    /* Navigation */
-    .navigation {
-        flex-direction: column;
-        gap: 10px;
-        padding: 15px 10px;
-    }
-    .menu {
-        gap: 12px;
-        font-size: 14px;
-        justify-content: center;
-    }
-
-    /* Hero section .c */
+    
     .c {
-        padding-top: 30px;
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto;
-        gap: 15px;
-        padding-bottom: 30px;
+        grid-template-rows: auto auto auto auto;
     }
-
+    
     .c1 {
-        grid-column: 1 / -1 !important;
-        grid-row: 1;
-        padding: 20px 15px;
-        text-align: center;
+        grid-column: 2/span 18;
+        padding: 15px;
     }
-
+    
     .c1 h1 span:first-child {
-        font-size: 22px !important;
+        font-size: 30px !important;
     }
-
-    /* Bouton */
-    .c > button,
-    .c .btn {
-        grid-column: 1 / -1 !important;
-        grid-row: 2;
-        width: 80%;
-        margin: 0 auto;
-        font-size: 16px;
-        padding: 10px 20px;
+    
+    button {
+        grid-column: 5/span 12;
+        font-size: 18px;
+        padding: 8px 20px;
     }
-
-    /* Cards stats */
+    
     .d1, .d2, .d3 {
-        grid-column: 1 / -1 !important;
-        grid-row: auto !important;
-        width: 85%;
-        height: auto;
-        padding: 20px;
-        margin: 0 auto;
-        font-size: 16px;
+        grid-row: 3;
+        height: 180px;
+        font-size: 14px;
     }
-
-    /* Actualités */
+    
+    .d1 i, .d2 i, .d3 i {
+        font-size: 2rem !important;
+    }
+    
     .actualites {
-        grid-column: 1 / -1 !important;
-        padding: 40px 15px;
+        padding: 40px 20px;
     }
-
+    
     .actualites h1 {
-        font-size: 28px !important;
+        font-size: 36px !important;
     }
-
+    
     .actualites > p {
-        font-size: 22px !important;
+        font-size: 30px !important;
     }
-
+    
     .cartes {
         gap: 20px;
     }
-
+    
     .carte {
         width: 100%;
-        max-width: 100%;
+        max-width: 350px;
     }
-
-    /* Footer */
-    .footer {
-        grid-column: 1 / -1 !important;
-        padding: 40px 20px 30px 20px;
-    }
-
+    
     .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 25px;
     }
-
+    
     .footer-col h2 {
-        font-size: 24px;
-    }
-
-    .footer-col p {
-        font-size: 15px;
-    }
-
-    .copy-right {
-        font-size: 14px;
-        text-align: center;
+        font-size: 28px;
     }
 }
+/* Empêcher les éléments de dépasser l'écran */
+* {
+  box-sizing: border-box;
+}
 
-/* ===========================
-   TRÈS PETIT MOBILE (max 480px)
-=========================== */
-@media screen and (max-width: 480px) {
-    .grid {
-        grid-template-columns: repeat(2, 1fr);
-        overflow-x: hidden;
-    }
+img, video {
+  max-width: 100%;
+  height: auto;
+}
 
-    .a, .a1 { display: none; }
-
-    .a2, .a3 {
-        grid-column: span 1;
-        font-size: 11px;
-        padding: 5px;
-    }
-
-    .navigation {
-        grid-column: span 2;
-    }
-
-    .c {
-        grid-column: span 2;
-    }
-
-    .actualites {
-        grid-column: span 2;
-    }
-
-    .footer {
-        grid-column: span 2;
-    }
-
-    .c1 h1 span:first-child {
-        font-size: 18px !important;
-    }
-
-    .menu a {
-        font-size: 13px;
-    }
+/* Adapter la mise en page sur petit écran */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0 15px;
+  }
 }
