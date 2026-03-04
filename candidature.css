@@ -60,16 +60,6 @@ html {
   transform: scale(1.05);
 }
 
-.arriere-plan {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  background: var(--white);
-}
-.arriere-plan::before, .arriere-plan::after {
-  content: none;
-}
-
 .contenu-principal {
   position: relative;
   z-index: 1;
@@ -98,9 +88,15 @@ html {
   color: var(--teal); 
   margin-bottom: 28px;
 }
-
-.carte-formulaire h2 span {
-  color: var(--gray);
+.grille-formulaire {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.champ {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .champ label {
@@ -118,10 +114,19 @@ html {
   outline: none;
   transition: all .2s;
 }
+.champ input:focus {
+  border-color: var(--teal);
+  background: rgba(0, 161, 166, 0.1);
+}
 
 .champ input::placeholder {
   color: var(--light-gray);
 }
+
+.champ.pleine-largeur {
+    grid-column: 1 / -1;
+}
+
 .bouton {
   grid-column: 1 / -1;
   margin-top: 6px;
@@ -138,27 +143,10 @@ html {
   opacity: 0.9;
 }
 
-.securise {
-  color: var(--gray);
-}
 .bouton:active {
   transform: scale(.98);
 }
-.grille-formulaire {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
 
-.champ {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.champ.pleine-largeur {
-    grid-column: 1 / -1;
-}
 
 textarea {
     width: 100%;
