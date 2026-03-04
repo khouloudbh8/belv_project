@@ -50,7 +50,6 @@ html {
 }
 
 .menu-liens a.actif {
-  font-weight: bold;
   text-decoration: underline !important;
   color: inherit;
 }
