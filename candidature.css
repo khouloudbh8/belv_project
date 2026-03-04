@@ -254,21 +254,26 @@ input[type="checkbox"] {
   padding-top: 30px;
   font-size: 22px;
 }
-
-@media (max-width: 860px) {
-  .contenu-principal {
+@media (max-width: 768px) {
+  .grille-formulaire {
     grid-template-columns: 1fr;
-    padding: 40px 24px;
+  }
+  .champ {
+    grid-column: 1 / -1;
+  }
+  .contenu-principal {
+    padding: 30px 16px;
+  }
+  .grille-pied {
+    grid-template-columns: 1fr 1fr;
     gap: 40px;
-    align-items: start;
-    padding-top: 80px;
   }
 
-  .statistiques {
-    grid-template-columns: repeat(3, auto);
+  .pied-de-page {
+    padding: 40px 24px;
   }
 
-  .arriere-plan::after {
-    background: rgba(0, 0, 0, 0.6);
+  .colonne-pied h2 {
+    font-size: 24px;
   }
 }
