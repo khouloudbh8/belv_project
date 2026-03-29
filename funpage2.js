@@ -1,5 +1,5 @@
 // Liste des images utilisées pour les niveaux du puzzle
-const images = ["dob.png", "flamant.png", "oie.png", "kongourou.png", "gazelle.png"];
+const images = ["image/dob.png", "image/flamant.png", "image/oie.png", "image/kongourou.png", "image/gazelle.png"];
 
 // Taille de la grille (3x3)
 const taille = 3;
