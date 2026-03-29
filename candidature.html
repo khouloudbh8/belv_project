@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Candidature Bénévolat - Zoo du Belvédère</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="candidature.css">
-    <link rel="icon" type="image/png" href="image/zoo.jpg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candidature Bénévolat - Zoo du Belvédère</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="candidature.css">
+  <link rel="icon" type="image/png" href="image/zoo.jpg">
 
 </head>
 
@@ -39,22 +40,104 @@
       <img src="image/zoo.jpg" alt="logo Zoo Belvédère" width="100" height="100">
       <div class="menu-liens">
         <a href="index.html" style="text-decoration:none; color:white;">Accueil</a>
-        <a href="animaux.html"  style="text-decoration:none; color:white;">Animaux</a>
-        <a href="benevolat"     style="text-decoration:none; color:white;" class="actif">Bénévolat</a>
+        <a href="animaux.html" style="text-decoration:none; color:white;">Animaux</a>
+        <a href="benevolat" style="text-decoration:none; color:white;" class="actif">Bénévolat</a>
         <a href="donation.html" style="text-decoration:none; color:white;">Donations</a>
-        <a href="allnews.html"  style="text-decoration:none; color:white;">Actualités</a>
-        <a href="hotel.html"    style="text-decoration:none; color:white;">Hôtels</a>
+        <a href="allnews.html" style="text-decoration:none; color:white;">Actualités</a>
+        <a href="hotel.html" style="text-decoration:none; color:white;">Hôtels</a>
       </div>
     </div>
 
   </div>
+  <div class="section-animaux" id="section-tableau">
+    <div class="section-titre">
+      <h2>🐾 Espèces ayant besoin de bénévoles</h2>
+      <p>Consultez les espèces du zoo et leurs créneaux disponibles. Cliquez sur <strong>Postuler</strong> pour remplir
+        votre candidature automatiquement.</p>
+    </div>
+
+    <div class="barre-recherche">
+      <div class="barre-recherche-input">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="input-recherche" placeholder="Rechercher par espèce, domaine ou créneau...">
+        <button id="btn-reset-recherche" title="Réinitialiser">✕</button>
+      </div>
+      <span id="compteur" class="compteur-resultats"></span>
+    </div>
+
+    <div class="conteneur-tableau-animaux">
+      <table id="tableau-animaux">
+        <thead>
+          <tr>
+            <th>Espèce</th>
+            <th>Domaine requis</th>
+            <th>Créneaux disponibles</th>
+            <th>Bénévoles nécessaires</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="carte-ajouter">
+      <h3>➕ Ajouter une espèce et ses besoins</h3>
+      <form id="form-ajouter" class="grille-ajouter">
+
+        <div class="champ">
+          <label for="input-espece">Espèce</label>
+          <input type="text" id="input-espece" placeholder="Ex: Lion, Girafe...">
+        </div>
+
+        <div class="champ">
+          <label for="input-domaine">Domaine requis</label>
+          <select id="input-domaine">
+            <option value="Soin des Animaux">Soin des Animaux</option>
+            <option value="Sensibilisation">Sensibilisation</option>
+            <option value="Espaces Verts">Espaces Verts</option>
+          </select>
+        </div>
+
+        <div class="champ">
+          <label for="input-nb">Nombre de bénévoles nécessaires</label>
+          <input type="number" id="input-nb" min="1" max="20" value="1">
+        </div>
+
+        <div class="champ pleine-largeur">
+          <label>Créneaux disponibles</label>
+          <div class="groupe-cases">
+            <label class="case-element"><input type="checkbox" value="Matin Lun"> ☀️ Lun Matin</label>
+            <label class="case-element"><input type="checkbox" value="Après-midi Lun"> 🌆 Lun Après-midi</label>
+            <label class="case-element"><input type="checkbox" value="Matin Mar"> ☀️ Mar Matin</label>
+            <label class="case-element"><input type="checkbox" value="Après-midi Mar"> 🌆 Mar Après-midi</label>
+            <label class="case-element"><input type="checkbox" value="Matin Mer"> ☀️ Mer Matin</label>
+            <label class="case-element"><input type="checkbox" value="Après-midi Mer"> 🌆 Mer Après-midi</label>
+            <label class="case-element"><input type="checkbox" value="Matin Jeu"> ☀️ Jeu Matin</label>
+            <label class="case-element"><input type="checkbox" value="Après-midi Jeu"> 🌆 Jeu Après-midi</label>
+            <label class="case-element"><input type="checkbox" value="Matin Ven"> ☀️ Ven Matin</label>
+            <label class="case-element"><input type="checkbox" value="Après-midi Ven"> 🌆 Ven Après-midi</label>
+            <label class="case-element"><input type="checkbox" value="Matin Sam"> ☀️ Sam Matin</label>
+            <label class="case-element"><input type="checkbox" value="Après-midi Sam"> 🌆 Sam Après-midi</label>
+            <label class="case-element"><input type="checkbox" value="Matin Dim"> ☀️ Dim Matin</label>
+            <label class="case-element"><input type="checkbox" value="Après-midi Dim"> 🌆 Dim Après-midi</label>
+          </div>
+        </div>
+
+        <button type="submit" class="bouton pleine-largeur">➕ Ajouter au tableau</button>
+      </form>
+    </div>
+  </div>
 
 
+  <!-- =====================================================
+       FORMULAIRE DE CANDIDATURE
+  ====================================================== -->
   <div class="contenu-principal">
     <div class="carte-formulaire">
       <h2>Remplissez le formulaire ci-dessous</h2>
       <form action="https://httpbin.org/get" method="GET">
         <div class="grille-formulaire">
+
           <div class="champ">
             <label for="nom">Nom</label>
             <input type="text" id="nom" placeholder="Votre nom">
@@ -74,7 +157,18 @@
             <label for="tel">Numéro de téléphone</label>
             <input type="tel" id="tel" placeholder="+216 XX XXX XXX">
           </div>
-        </form>
+
+          <!-- Espèce liée — remplie auto si Postuler, sinon choix manuel -->
+          <div class="champ pleine-largeur">
+            <label for="select-espece-liee">Espèce pour laquelle vous postulez</label>
+            <select id="select-espece-liee">
+              <option value="">— Sélectionnez une espèce —</option>
+              <option value="libre">🗓️ Disponibilité libre (aucune espèce spécifique)</option>
+              <!-- Options ajoutées dynamiquement par JS -->
+            </select>
+          </div>
+
+          <!-- Tableau des disponibilités -->
           <div class="champ pleine-largeur">
             <label>Vos disponibilités</label>
             <div class="conteneur-tableau">
@@ -115,11 +209,15 @@
                 </tbody>
               </table>
             </div>
+
+            <!-- Zone de suggestion — apparaît uniquement si un animal correspond -->
+            <div id="zone-suggestion" style="display:none; margin-top: 12px;"></div>
           </div>
 
           <div class="champ pleine-largeur">
             <label for="motivations">Pourquoi souhaitez-vous nous rejoindre ?</label>
-            <textarea id="motivations" rows="4" placeholder="Parlez-nous de votre passion pour les animaux..."></textarea>
+            <textarea id="motivations" rows="4"
+              placeholder="Parlez-nous de votre passion pour les animaux..."></textarea>
           </div>
 
           <div class="champ pleine-largeur">
@@ -137,8 +235,6 @@
       </form>
     </div>
   </div>
-
-
   <div class="pied-de-page">
     <div class="grille-pied">
 
@@ -175,7 +271,7 @@
           <a href="mailto:contact@belvedere-zoo.tn">contact@belvedere-zoo.tn</a>
         </p>
         <p><i class="fa-solid fa-phone"></i> +216 71897716</p>
-         <p><i class="fa-brands fa-envelope"></i><a href="contact.html">Contact Us</a></p>
+        <p><i class="fa-brands fa-envelope"></i><a href="contact.html">Contact Us</a></p>
 
       </div>
 
@@ -185,6 +281,7 @@
       © 2026 Zoo du Belvédère Tunis. Tous droits réservés.
     </div>
   </div>
-
+  <script src="candidature.js"></script>
 </body>
+
 </html>
