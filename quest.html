@@ -3,12 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Questionnaire</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="quest.css">
-<script src="quest.js"></script>
+<script src="quest.js" defer></script>
 </head>
 
 <body>
-    <div class="grille">
+
+  <div class="grille">
     <div class="boite info-horaire">
       <i class="fa-regular fa-clock fa-beat"></i>
       <h5>Ouvert: 9h00 - 17h00</h5>
@@ -37,189 +39,190 @@
         <a href="hotel.html" style="text-decoration:none; color:white;">Hôtels</a>
       </div>
     </div>
-  </div>
+  </div><!-- fin .grille -->
 
-<div class="arriere-plan"></div>
+  <div class="contenu-principal">
+    <div class="carte-formulaire">
+      <h2 style="text-align:center;">Questionnaire</h2>
 
-<div class="contenu-principal">
-  <div class="carte-formulaire">
-    <h2 style="text-align:center;">Questionnaire </h2>
+      <form id="formulaire" class="grille-formulaire">
 
-    <form id="formulaire" class="grille-formulaire">
-
-      <div class="champ">
-        <label>Nom</label>
-        <input type="text" id="nom" placeholder="Votre nom">
-        <span class="erreur" id="err-nom"></span>
-      </div>
-      <div class="champ">
-        <label>Email</label>
-        <input type="email" id="email" placeholder="Votre email">
-        <span class="erreur" id="err-email"></span>
-      </div>
-
-      <div class="champ pleine-largeur"><h3>1. Frequentation et habitudes</h3></div>
-
-      <div class="champ pleine-largeur">
-        <label>A quelle frequence visitez-vous le Parc du Belvedere ?</label>
-        <div class="groupe-cases">
-          <label class="case-element"><input type="radio" name="frequence" value="souvent"> Souvent</label>
-          <label class="case-element"><input type="radio" name="frequence" value="parfois"> Parfois</label>
-          <label class="case-element"><input type="radio" name="frequence" value="rarement"> Rarement</label>
-          <label class="case-element"><input type="radio" name="frequence" value="jamais"> Jamais</label>
+        <div class="champ">
+          <label>Nom</label>
+          <input type="text" id="nom" placeholder="Votre nom">
+          <span class="erreur" id="err-nom"></span>
         </div>
-        <span class="erreur" id="err-frequence"></span>
-      </div>
-
-      <div class="champ pleine-largeur">
-        <label>A quels moments de la journee preferez-vous y aller ?</label>
-        <div class="groupe-cases">
-          <label class="case-element"><input type="radio" name="moment" value="matin"> Matin</label>
-          <label class="case-element"><input type="radio" name="moment" value="apres-midi"> Apres-midi</label>
-          <label class="case-element"><input type="radio" name="moment" value="soir"> Soir</label>
+        <div class="champ">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="Votre email">
+          <span class="erreur" id="err-email"></span>
         </div>
-      </div>
 
-      <div class="champ pleine-largeur">
-        <label>Avec qui venez-vous generalement ?</label>
-        <div class="groupe-cases">
-          <label class="case-element"><input type="checkbox" name="compagnie" value="amis"> Amis</label>
-          <label class="case-element"><input type="checkbox" name="compagnie" value="famille"> Famille</label>
-          <label class="case-element"><input type="checkbox" name="compagnie" value="seul"> Seul(e)</label>
-          <label class="case-element"><input type="checkbox" name="compagnie" value="collegues"> Collegues</label>
+        <div class="champ pleine-largeur"><h3>1. Frequentation et habitudes</h3></div>
+
+        <div class="champ pleine-largeur">
+          <label>A quelle frequence visitez-vous le Parc du Belvedere ?</label>
+          <div class="groupe-cases">
+            <label class="case-element"><input type="radio" name="frequence" value="souvent"> Souvent</label>
+            <label class="case-element"><input type="radio" name="frequence" value="parfois"> Parfois</label>
+            <label class="case-element"><input type="radio" name="frequence" value="rarement"> Rarement</label>
+            <label class="case-element"><input type="radio" name="frequence" value="jamais"> Jamais</label>
+          </div>
+          <span class="erreur" id="err-frequence"></span>
         </div>
-        <span class="erreur" id="err-compagnie"></span>
-      </div>
 
-      <div class="champ pleine-largeur"><h3>2. Experience sur place</h3></div>
-
-      <div class="champ pleine-largeur">
-        <label>Qu'est-ce que vous aimez le plus dans le parc ?</label>
-        <textarea name="aime_plus" rows="3" placeholder="Ecrivez ici..."></textarea>
-      </div>
-
-      <div class="champ pleine-largeur">
-        <label>Quelles activites faites-vous sur place ?</label>
-        <div class="groupe-cases">
-          <label class="case-element"><input type="checkbox" name="activites" value="sport"> Sport</label>
-          <label class="case-element"><input type="checkbox" name="activites" value="pique-nique"> Pique-nique</label>
-          <label class="case-element"><input type="checkbox" name="activites" value="balade"> Balade</label>
-          <label class="case-element"><input type="checkbox" name="activites" value="repos"> Repos</label>
-          <label class="case-element"><input type="checkbox" name="activites" value="zoo"> Visite du zoo</label>
+        <div class="champ pleine-largeur">
+          <label>A quels moments de la journee preferez-vous y aller ?</label>
+          <div class="groupe-cases">
+            <label class="case-element"><input type="radio" name="moment" value="matin"> Matin</label>
+            <label class="case-element"><input type="radio" name="moment" value="apres-midi"> Apres-midi</label>
+            <label class="case-element"><input type="radio" name="moment" value="soir"> Soir</label>
+          </div>
         </div>
-      </div>
 
-      <div class="champ pleine-largeur">
-        <label>Comment evaluez-vous la proprete du parc ?</label>
-        <div class="groupe-cases">
-          <label class="case-element"><input type="radio" name="proprete" value="tres_propre"> Tres propre</label>
-          <label class="case-element"><input type="radio" name="proprete" value="moyen"> Moyennement propre</label>
-          <label class="case-element"><input type="radio" name="proprete" value="pas_propre"> Pas propre</label>
+        <div class="champ pleine-largeur">
+          <label>Avec qui venez-vous generalement ?</label>
+          <div class="groupe-cases">
+            <label class="case-element"><input type="checkbox" name="compagnie" value="amis"> Amis</label>
+            <label class="case-element"><input type="checkbox" name="compagnie" value="famille"> Famille</label>
+            <label class="case-element"><input type="checkbox" name="compagnie" value="seul"> Seul(e)</label>
+            <label class="case-element"><input type="checkbox" name="compagnie" value="collegues"> Collegues</label>
+          </div>
+          <span class="erreur" id="err-compagnie"></span>
         </div>
-      </div>
 
-      <div class="champ pleine-largeur">
-        <label>Vous sentez-vous en securite au Belvedere ?</label>
-        <div class="groupe-cases">
-          <label class="case-element"><input type="radio" name="securite" value="oui"> Oui</label>
-          <label class="case-element"><input type="radio" name="securite" value="plutot"> Plutot oui</label>
-          <label class="case-element"><input type="radio" name="securite" value="non"> Non</label>
+        <div class="champ pleine-largeur"><h3>2. Experience sur place</h3></div>
+
+        <div class="champ pleine-largeur">
+          <label>Qu'est-ce que vous aimez le plus dans le parc ?</label>
+          <textarea name="aime_plus" rows="3" placeholder="Ecrivez ici..."></textarea>
         </div>
-      </div>
 
-      <div class="champ pleine-largeur"><h3>3. Zoo du Belvedere</h3></div>
-
-      <div class="champ pleine-largeur">
-        <label>Avez-vous deja visite le zoo du parc ?</label>
-        <div class="groupe-cases">
-          <label class="case-element"><input type="radio" name="visite_zoo" value="oui"> Oui</label>
-          <label class="case-element"><input type="radio" name="visite_zoo" value="non"> Non</label>
+        <div class="champ pleine-largeur">
+          <label>Quelles activites faites-vous sur place ?</label>
+          <div class="groupe-cases">
+            <label class="case-element"><input type="checkbox" name="activites" value="sport"> Sport</label>
+            <label class="case-element"><input type="checkbox" name="activites" value="pique-nique"> Pique-nique</label>
+            <label class="case-element"><input type="checkbox" name="activites" value="balade"> Balade</label>
+            <label class="case-element"><input type="checkbox" name="activites" value="repos"> Repos</label>
+            <label class="case-element"><input type="checkbox" name="activites" value="zoo"> Visite du zoo</label>
+          </div>
         </div>
-      </div>
 
-      <div class="champ pleine-largeur">
-        <label>Comment jugez-vous les conditions des animaux ?</label>
-        <div class="groupe-cases">
-          <label class="case-element"><input type="radio" name="conditions_animaux" value="bonnes"> Bonnes</label>
-          <label class="case-element"><input type="radio" name="conditions_animaux" value="moyennes"> Moyennes</label>
-          <label class="case-element"><input type="radio" name="conditions_animaux" value="mauvaises"> Mauvaises</label>
+        <div class="champ pleine-largeur">
+          <label>Comment evaluez-vous la proprete du parc ?</label>
+          <div class="groupe-cases">
+            <label class="case-element"><input type="radio" name="proprete" value="tres_propre"> Tres propre</label>
+            <label class="case-element"><input type="radio" name="proprete" value="moyen"> Moyennement propre</label>
+            <label class="case-element"><input type="radio" name="proprete" value="pas_propre"> Pas propre</label>
+          </div>
         </div>
-      </div>
 
-      <div class="champ pleine-largeur">
-        <label>Le zoo ameliore-t-il ou diminue-t-il votre perception du parc ?</label>
-        <div class="groupe-cases">
-          <label class="case-element"><input type="radio" name="impact_zoo" value="ameliore"> Ameliore</label>
-          <label class="case-element"><input type="radio" name="impact_zoo" value="diminue"> Diminue</label>
-          <label class="case-element"><input type="radio" name="impact_zoo" value="neutre"> Sans effet</label>
+        <div class="champ pleine-largeur">
+          <label>Vous sentez-vous en securite au Belvedere ?</label>
+          <div class="groupe-cases">
+            <label class="case-element"><input type="radio" name="securite" value="oui"> Oui</label>
+            <label class="case-element"><input type="radio" name="securite" value="plutot"> Plutot oui</label>
+            <label class="case-element"><input type="radio" name="securite" value="non"> Non</label>
+          </div>
         </div>
-      </div>
 
-      <div class="champ pleine-largeur"><h3>4. Problemes et ameliorations</h3></div>
+        <div class="champ pleine-largeur"><h3>3. Zoo du Belvedere</h3></div>
 
-      <div class="champ pleine-largeur">
-        <label>Quels sont les principaux problemes du parc selon vous ?</label>
-        <textarea name="problemes" rows="3" placeholder="Ecrivez ici..."></textarea>
-      </div>
-
-      <div class="champ pleine-largeur">
-        <label>Qu'est-ce qui devrait etre ameliore en priorite ?</label>
-        <textarea name="ameliorations" rows="3" placeholder="Ecrivez ici..."></textarea>
-      </div>
-
-      <div class="champ pleine-largeur">
-        <label>Avez-vous deja vecu une mauvaise experience au Belvedere ?</label>
-        <textarea name="mauvaise_exp" rows="3" placeholder="Decrivez si oui..."></textarea>
-      </div>
-
-      <div class="champ pleine-largeur"><h3>5. Satisfaction globale</h3></div>
-
-      <div class="champ pleine-largeur">
-        <label>Notez votre satisfaction globale sur 10</label><br>
-        <input type="range" name="satisfaction" min="1" max="10" value="5"
-               oninput="document.getElementById('note-val').textContent = this.value"
-               style="width:100%; margin-top:8px;">
-        <span id="note-val">5</span> / 10
-      </div>
-
-      <div class="champ pleine-largeur">
-        <label>Le parc est-il :</label>
-        <div class="groupe-cases">
-          <label class="case-element"><input type="radio" name="proprete2" value="tres_propre"> Tres propre</label>
-          <label class="case-element"><input type="radio" name="proprete2" value="moyen"> Moyennement propre</label>
-          <label class="case-element"><input type="radio" name="proprete2" value="pas_propre"> Pas propre</label>
+        <div class="champ pleine-largeur">
+          <label>Avez-vous deja visite le zoo du parc ?</label>
+          <div class="groupe-cases">
+            <label class="case-element"><input type="radio" name="visite_zoo" value="oui"> Oui</label>
+            <label class="case-element"><input type="radio" name="visite_zoo" value="non"> Non</label>
+          </div>
         </div>
-      </div>
-      <div class="champ pleine-largeur"><h3>6. Bénévolat</h3></div>
-      <div class="champ pleine-largeur">
-        <label>Etes-vous interesse par le benevolat ?</label>
-        <div class="groupe-cases">
-          <label class="case-element"><input type="radio" name="interet" value="oui"> Oui</label>
-          <label class="case-element"><input type="radio" name="interet" value="non"> Non</label>
+
+        <div class="champ pleine-largeur">
+          <label>Comment jugez-vous les conditions des animaux ?</label>
+          <div class="groupe-cases">
+            <label class="case-element"><input type="radio" name="conditions_animaux" value="bonnes"> Bonnes</label>
+            <label class="case-element"><input type="radio" name="conditions_animaux" value="moyennes"> Moyennes</label>
+            <label class="case-element"><input type="radio" name="conditions_animaux" value="mauvaises"> Mauvaises</label>
+          </div>
         </div>
-      </div>
 
-      <div class="champ pleine-largeur">
-        <label>Domaines d'interet (benevolat)</label>
-        <div class="groupe-cases">
-          <label class="case-element"><input type="checkbox" name="domaine" value="social"> Social</label>
-          <label class="case-element"><input type="checkbox" name="domaine" value="education"> Education</label>
-          <label class="case-element"><input type="checkbox" name="domaine" value="environnement"> Environnement</label>
+        <div class="champ pleine-largeur">
+          <label>Le zoo ameliore-t-il ou diminue-t-il votre perception du parc ?</label>
+          <div class="groupe-cases">
+            <label class="case-element"><input type="radio" name="impact_zoo" value="ameliore"> Ameliore</label>
+            <label class="case-element"><input type="radio" name="impact_zoo" value="diminue"> Diminue</label>
+            <label class="case-element"><input type="radio" name="impact_zoo" value="neutre"> Sans effet</label>
+          </div>
         </div>
-      </div>
 
-      <div class="champ pleine-largeur">
-        <label>Votre avis general</label>
-        <textarea id="avis" rows="4" placeholder="Ecrivez ici..."></textarea>
-        <span class="erreur" id="err-avis"></span>
-      </div>
+        <div class="champ pleine-largeur"><h3>4. Problemes et ameliorations</h3></div>
 
-      <button type="submit" class="bouton">Envoyer</button>
+        <div class="champ pleine-largeur">
+          <label>Quels sont les principaux problemes du parc selon vous ?</label>
+          <textarea name="problemes" rows="3" placeholder="Ecrivez ici..."></textarea>
+        </div>
 
-    </form>
-  </div>
-</div>
-<div class="pied-de-page">
+        <div class="champ pleine-largeur">
+          <label>Qu'est-ce qui devrait etre ameliore en priorite ?</label>
+          <textarea name="ameliorations" rows="3" placeholder="Ecrivez ici..."></textarea>
+        </div>
+
+        <div class="champ pleine-largeur">
+          <label>Avez-vous deja vecu une mauvaise experience au Belvedere ?</label>
+          <textarea name="mauvaise_exp" rows="3" placeholder="Decrivez si oui..."></textarea>
+        </div>
+
+        <div class="champ pleine-largeur"><h3>5. Satisfaction globale</h3></div>
+
+        <div class="champ pleine-largeur">
+          <label>Notez votre satisfaction globale sur 10</label><br>
+          <input type="range" name="satisfaction" min="1" max="10" value="5"
+                 oninput="document.getElementById('note-val').textContent = this.value"
+                 style="width:100%; margin-top:8px;">
+          <span id="note-val">5</span> / 10
+        </div>
+
+        <div class="champ pleine-largeur">
+          <label>Le parc est-il :</label>
+          <div class="groupe-cases">
+            <label class="case-element"><input type="radio" name="proprete2" value="tres_propre"> Tres propre</label>
+            <label class="case-element"><input type="radio" name="proprete2" value="moyen"> Moyennement propre</label>
+            <label class="case-element"><input type="radio" name="proprete2" value="pas_propre"> Pas propre</label>
+          </div>
+        </div>
+
+        <div class="champ pleine-largeur"><h3>6. Bénévolat</h3></div>
+
+        <div class="champ pleine-largeur">
+          <label>Etes-vous interesse par le benevolat ?</label>
+          <div class="groupe-cases">
+            <label class="case-element"><input type="radio" name="interet" value="oui"> Oui</label>
+            <label class="case-element"><input type="radio" name="interet" value="non"> Non</label>
+          </div>
+        </div>
+
+        <div class="champ pleine-largeur">
+          <label>Domaines d'interet (benevolat)</label>
+          <div class="groupe-cases">
+            <label class="case-element"><input type="checkbox" name="domaine" value="social"> Social</label>
+            <label class="case-element"><input type="checkbox" name="domaine" value="education"> Education</label>
+            <label class="case-element"><input type="checkbox" name="domaine" value="environnement"> Environnement</label>
+          </div>
+        </div>
+
+        <div class="champ pleine-largeur">
+          <label>Votre avis general</label>
+          <textarea id="avis" rows="4" placeholder="Ecrivez ici..."></textarea>
+          <span class="erreur" id="err-avis"></span>
+        </div>
+
+        <button type="submit" class="bouton">Envoyer</button>
+
+      </form>
+    </div>
+  </div><!-- fin .contenu-principal -->
+
+  <div class="pied-de-page">
     <div class="grille-pied">
 
       <div class="colonne-pied a-propos">
@@ -256,7 +259,6 @@
         </p>
         <p><i class="fa-solid fa-phone"></i> +216 71897716</p>
         <p><i class="fa-brands fa-envelope"></i><a href="contact.html">Contact Us</a></p>
-
       </div>
 
     </div>
@@ -264,6 +266,7 @@
     <div class="droits-auteur">
       © 2026 Zoo du Belvédère Tunis. Tous droits réservés.
     </div>
-  </div>
+  </div><!-- fin .pied-de-page -->
+
 </body>
 </html>

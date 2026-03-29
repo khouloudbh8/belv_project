@@ -30,6 +30,8 @@ body {
   grid-auto-rows: auto;
   margin: auto;
   width: 100%;
+  position: relative;
+  z-index: 10; /* toujours au-dessus de tout */
 }
 
 .boite {
@@ -72,19 +74,6 @@ body {
   transform: scale(1.05);
 }
 
-/* ─── ARRIERE-PLAN ─── */
-.arriere-plan {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  background: var(--white);
-}
-
-.arriere-plan::before,
-.arriere-plan::after {
-  content: none;
-}
-
 /* ─── CONTENU PRINCIPAL ─── */
 .contenu-principal {
   position: relative;
@@ -94,6 +83,7 @@ body {
   justify-content: center;
   align-items: flex-start;
   padding: 60px 80px;
+  background: var(--white);
 }
 
 /* ─── CARTE FORMULAIRE ─── */
