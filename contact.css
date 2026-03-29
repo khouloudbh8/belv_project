@@ -73,13 +73,28 @@ gap:40px;
     color: #555;
     font-family: 'Caveat', cursive;
 }
-
 .contact-container {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     gap: 50px;
     max-width: 1200px;
     margin: 0 auto;
+    flex-direction: row-reverse;
+
+}
+.gallery {
+    flex: 1;
+    max-width: 500px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
+    opacity: 1;
+    transition: opacity 0.8s ease;
 }
 .formulaire {
     background: #f5f5f5;
@@ -127,7 +142,7 @@ gap:40px;
 }
 
 .btn-envoyer {
-    background: #00A1A6;
+    background:  #00A1A6;
     color: white;
     border: none;
     padding: 15px 40px;
@@ -143,7 +158,85 @@ gap:40px;
     background: #007f82;
     transform: scale(1.02);
 }
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
 
+
+.popup-content {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  background: #00A1A6;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.card {
+  width: 500px;
+  padding: 30px;
+  background: white;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card:hover {
+  background: #b8f1f2;
+  transform: scale(1.02);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+.floating-msg {
+  position: fixed;
+  top: 260px;
+  left: 20px;
+  animation: float 2s ease-in-out infinite;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.floating-msg img {
+  max-width: 300px; /* limite max */
+  width: auto;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
+}
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 20px;
+  color: white;
+  background: rgba(0,0,0,0.6);
+  border-radius: 50%;
+  padding: 2px 8px;
+  cursor: pointer;
+}
+
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
 .footer{
     grid-column: span 40;
     grid-row: 5;
@@ -342,5 +435,36 @@ gap:40px;
 }
 
 
+.banniere {
+
+    background: #ffffff;
+    color: black;
+    overflow: hidden;
+    grid-column: span 40;
+}
+
+.banniere p {
+    display: inline-block;
+    white-space: nowrap;
+    animation: defilement 20s linear infinite;
+    font-size: 40px;
+    font-family: 'Caveat', cursive;
+}
+
+@keyframes defilement {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
 
 
+#caption {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 40px;
+    color: #000000;
+    font-family: 'Caveat', cursive;
+}

@@ -13,6 +13,7 @@
 
        
 <body>
+
     <div class="grid"> 
    <div class="box a">
    <i class="fa-regular fa-clock fa-beat"></i>
@@ -46,60 +47,120 @@
             <a href="hotel.html" style="text-decoration: none; color: white; " >Hôtels</a>
          </div>
         
-    
 </div>
 
-
-
+<div class="banniere">
+    <p id="message-defilant"></p>
+</div>
 <section class="contact-section">
         <h1 class="titre-contact">
             📬 Contactez<span style="color:#00A1A6;">-nous</span>
         </h1>
         <p class="sous-titre">Une question ? Une réservation ? Écrivez-nous !</p>
 
-        <div class="contact-container">
-            <div class="formulaire">
-                <form action="mailto:contact@belvedere-zoo.tn" method="POST" enctype="text/plain">
-                    <div class="form-group">
-                        <label for="nom"><i class="fa-solid fa-user"></i> Nom complet *</label>
-                        <input type="text" id="nom" name="Nom" placeholder="Votre nom" required>
-                    </div>
+    <div class="contact-container">
 
-                    <div class="form-group">
-                        <label for="email"><i class="fa-solid fa-envelope"></i> Email *</label>
-                        <input type="email" id="email" name="Email" placeholder="votre@email.com" required>
-                    </div>
+    <div class="gallery">
+        <img id="imageflot" src="image/singe.png" alt="image">
+        <p id="caption">Explorez nos pensionnaires et vivez une expérience au plus près de la nature 🌿</p>
+       
 
-                    <div class="form-group">
-                        <label for="telephone"><i class="fa-solid fa-phone"></i> Téléphone</label>
-                        <input type="tel" id="telephone" name="Telephone" placeholder="+216 ...">
-                    </div>
+<div id="floatingMsg" class="floating-msg">
+  <span id="closeBtn" class="close">×</span>
 
-                    <div class="form-group">
-                        <label for="sujet"><i class="fa-solid fa-tag"></i> Sujet</label>
-                        <select id="sujet" name="Sujet">
-                            <option value="Information">Information</option>
-                            <option value="Réservation">Réservation</option>
-                            <option value="Bénévolat">Bénévolat</option>
-                            <option value="Donation">Donation</option>
-                            <option value="Autre">Autre</option>
-                        </select>
-                    </div>
+  <img src="image/quizz.png" alt="Zoo Message" onclick="goToPage()">
+</div>
 
-                    <div class="form-group">
-                        <label for="message"><i class="fa-solid fa-message"></i> Message *</label>
-                        <textarea id="message" name="Message" placeholder="Votre message..." rows="5" required></textarea>
-                    </div>
+<script>
+  function goToPage() {
+    window.location.href = "questionnaire.html";
+  }
 
-                    <button type="submit" class="btn-envoyer">
-                        Envoyer le message
-                    </button>
-                </form>
+  document.getElementById("closeBtn").addEventListener("click", function (event) {
+    event.stopPropagation(); // important pour éviter le clic sur l'image
+    document.getElementById("floatingMsg").style.display = "none";
+  });
+</script>
+  <!-- CARTE -->
+<div class="card" onclick="openPopup()">
+  <h2>📝 Questionnaire</h2>
+  <p>Clique ici pour commencer</p>
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <p>Tu veux quitter la page ? 🚀</p>
+
+    <button class="btn" onclick="goToPage()">Oui 📝</button>
+    <button class="btn"  onclick="closePopup()">Non ❌</button>
+  </div>
+</div>
+
+<script>
+// ouvrir popup
+function openPopup() {
+  document.getElementById("popup").style.display = "flex";
+}
+
+// fermer popup
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+// redirection
+function goToPage() {
+  window.location.href = "questionnaire.html";
+}
+</script>
+    </div>
+
+    <div class="formulaire">
+        <form action="mailto:contact@belvedere-zoo.tn" method="POST" enctype="text/plain">
+            
+            <div class="form-group">
+                <label><i class="fa-solid fa-user"></i> Nom complet *</label>
+                <input type="text" name="Nom" required>
             </div>
-              
+
+            <div class="form-group">
+                <label><i class="fa-solid fa-envelope"></i> Email *</label>
+                <input type="email" name="Email" required>
             </div>
+
+            <div class="form-group">
+                <label><i class="fa-solid fa-phone"></i> Téléphone</label>
+                <input type="tel" name="Telephone">
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa-solid fa-tag"></i> Sujet</label>
+                <select name="Sujet">
+                    <option>Information</option>
+                    <option>Réservation</option>
+                    <option>Bénévolat</option>
+                    <option>Donation</option>
+                    <option>Autre</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa-solid fa-message"></i> Message *</label>
+                <textarea name="Message" rows="5" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-envoyer">
+                Envoyer le message
+            </button>
+        </form>
+        
+    </div>
+
+</div>
         </div>
+    
     </section>
+    
 
 
 <div class="footer">
@@ -148,6 +209,58 @@
   </div>
 
 </div>
-</div>   
+</div> 
+<script>
+// Cree un objet qui contient la date etl'heure
+let d = new Date();
+
+// Selection de l'element dont l'id est "message-defilant"
+document.getElementById("message-defilant").innerHTML =
+
+
+"Bienvenue au site web <img src='./image/zoo.jpg' width='50' style='vertical-align:middle;'> ! Aujourd’hui "
++ d.toLocaleDateString() // Convertir la date
+
++ ", et l’heure actuelle est "
+
+// Convertir le temps
++ d.toLocaleTimeString();
+
+const images = [
+    "image/singe.png",
+    "image/flamant.png",
+    "image/hipo.png",
+    "image/lion.jpg",
+    "image/oie.png",
+    "image/oisea2.png",
+     "image/laklak.png"
+];
+
+let index = 0;
+const imgElement = document.getElementById("imageflot");
+imgElement.style.opacity = 1;
+imgElement.src = images[index];
+
+// Start slideshow after page loads
+setTimeout(() => {
+
+    setInterval(() => {
+        // fade out
+        imgElement.style.opacity = 0;
+
+        setTimeout(() => {
+            // changer l'image
+            index = (index + 1) % images.length;
+            imgElement.src = images[index];
+
+            // fade in
+            imgElement.style.opacity = 1;
+        }, 400);
+
+    }, 3000); //image se change apres 3s
+
+}, 0);
+
+</script> 
 </body>
-</html>
+</html> 

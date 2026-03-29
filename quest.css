@@ -1,0 +1,12 @@
+.erreur {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: 4px;
+    display: block;
+}
+input.invalide, textarea.invalide {
+    border-color: #e74c3c !important;
+}
+.contenu-principal {
+    position: relative;
+}
