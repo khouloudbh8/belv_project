@@ -1,3 +1,64 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --teal: #00A1A6;
+  --dark: #1E1E1E;
+  --white: #FFFFFF;
+  --gray: #757575;
+  --light-gray: #B3B3B3;
+}
+html {
+  scroll-behavior: smooth;
+}
+.grille {
+  display: grid;
+  grid-template-columns: repeat(40, 1fr);
+  grid-auto-rows: auto;
+  margin: auto;
+}
+
+.boite {
+  background: #ffffff;
+  color: inherit;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.info-horaire, .info-telephone, .info-vide, .info-adresse {
+  grid-column: span 10;
+  padding: 8px;
+}
+
+.barre-navigation {
+  grid-column: span 40;
+  background: #00A1A6;
+  padding: 10px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-liens {
+  display: flex;
+  gap: 40px;
+}
+
+.menu-liens a.actif {
+  font-weight: bold;
+  text-decoration: underline !important;
+  color: inherit;
+}
+
+.menu-liens a:hover {
+  color: #ff9900 !important;
+  transform: scale(1.05);
+}
 .contenu-principal {
     display: flex;
     flex-direction: column;
