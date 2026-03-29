@@ -1,12 +1,345 @@
-.erreur {
-    color: #e74c3c;
-    font-size: 0.85rem;
-    margin-top: 4px;
-    display: block;
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-input.invalide, textarea.invalide {
-    border-color: #e74c3c !important;
+
+:root {
+  --teal: #00A1A6;
+  --dark: #1E1E1E;
+  --white: #FFFFFF;
+  --gray: #757575;
+  --light-gray: #B3B3B3;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: inherit;
+}
+
+/* ─── HEADER GRILLE ─── */
+.grille {
+  display: grid;
+  grid-template-columns: repeat(40, 1fr);
+  grid-auto-rows: auto;
+  margin: auto;
+  width: 100%;
+}
+
+.boite {
+  background: #ffffff;
+  color: inherit;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.info-horaire, .info-telephone, .info-vide, .info-adresse {
+  grid-column: span 10;
+  padding: 8px;
+}
+
+.barre-navigation {
+  grid-column: span 40;
+  background: #00A1A6;
+  padding: 10px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-liens {
+  display: flex;
+  gap: 40px;
+}
+
+.menu-liens a.actif {
+  font-weight: bold;
+  text-decoration: underline !important;
+  color: inherit;
+}
+
+.menu-liens a:hover {
+  color: #ff9900 !important;
+  transform: scale(1.05);
+}
+
+/* ─── ARRIERE-PLAN ─── */
+.arriere-plan {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--white);
+}
+
+.arriere-plan::before,
+.arriere-plan::after {
+  content: none;
+}
+
+/* ─── CONTENU PRINCIPAL ─── */
 .contenu-principal {
-    position: relative;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px 80px;
+}
+
+/* ─── CARTE FORMULAIRE ─── */
+.carte-formulaire {
+  background: rgba(0, 161, 166, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 161, 166, 0.2);
+  border-radius: 20px;
+  padding: 44px 40px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.carte-formulaire h2 {
+  font-size: 24px;
+  color: var(--teal);
+  margin-bottom: 28px;
+}
+
+.carte-formulaire h3 {
+  font-size: 18px;
+  color: var(--teal);
+  margin-top: 10px;
+  border-left: 4px solid var(--teal);
+  padding-left: 10px;
+}
+
+/* ─── GRILLE FORMULAIRE ─── */
+.grille-formulaire {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.champ {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.champ.pleine-largeur {
+  grid-column: 1 / -1;
+}
+
+/* ─── LABELS ─── */
+.champ label {
+  color: var(--teal);
+  opacity: 0.85;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ─── INPUTS ─── */
+.champ input[type="text"],
+.champ input[type="email"] {
+  width: 100%;
+  padding: 13px 16px;
+  background: rgba(0, 161, 166, 0.05);
+  border: 1px solid rgba(0, 161, 166, 0.15);
+  border-radius: 10px;
+  color: var(--dark);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.champ input[type="text"]:focus,
+.champ input[type="email"]:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(0, 161, 166, 0.1);
+}
+
+.champ input::placeholder {
+  color: var(--light-gray);
+}
+
+/* ─── TEXTAREA ─── */
+textarea {
+  width: 100%;
+  padding: 13px 16px;
+  background: rgba(0, 161, 166, 0.05);
+  border: 1px solid rgba(0, 161, 166, 0.15);
+  border-radius: 10px;
+  color: var(--dark);
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+textarea:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(0, 161, 166, 0.1);
+}
+
+textarea::placeholder {
+  color: var(--light-gray);
+}
+
+/* ─── RANGE ─── */
+input[type="range"] {
+  accent-color: var(--teal);
+  width: 100%;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+#note-val {
+  font-weight: bold;
+  color: var(--teal);
+  font-size: 1.1rem;
+}
+
+/* ─── CASES À COCHER / RADIO ─── */
+.groupe-cases {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+
+.case-element {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--dark);
+  cursor: pointer;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--teal);
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+}
+
+/* ─── VALIDATION ─── */
+.erreur {
+  color: #e74c3c;
+  font-size: 0.82rem;
+  margin-top: 2px;
+  display: block;
+}
+
+input.invalide,
+textarea.invalide {
+  border-color: #e74c3c !important;
+}
+
+/* ─── BOUTON ─── */
+.bouton {
+  grid-column: 1 / -1;
+  margin-top: 6px;
+  padding: 15px;
+  background: var(--teal);
+  border: none;
+  border-radius: 10px;
+  color: var(--white);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.1s, opacity 0.2s;
+}
+
+.bouton:hover {
+  opacity: 0.9;
+}
+
+.bouton:active {
+  transform: scale(0.98);
+}
+
+/* ─── FOOTER ─── */
+.pied-de-page {
+  background: #159A9C;
+  color: white;
+  padding: 80px 100px 40px 100px;
+}
+
+.grille-pied {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 80px;
+}
+
+.colonne-pied h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.colonne-pied p {
+  margin: 10px 0;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.colonne-pied i {
+  margin-right: 10px;
+}
+
+.pied-de-page a {
+  color: white;
+  text-decoration: none;
+}
+
+.pied-de-page a:hover {
+  color: #ff9900;
+}
+
+.a-propos img {
+  margin-bottom: 20px;
+}
+
+.droits-auteur {
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  margin-top: 60px;
+  padding-top: 30px;
+  font-size: 22px;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 860px) {
+  .contenu-principal {
+    padding: 40px 24px;
+  }
+
+  .grille-formulaire {
+    grid-template-columns: 1fr;
+  }
+
+  .grille-pied {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 560px) {
+  .grille-pied {
+    grid-template-columns: 1fr;
+  }
+
+  .pied-de-page {
+    padding: 40px 24px;
+  }
 }
