@@ -289,7 +289,6 @@ document.getElementById("select-espece-liee").addEventListener("change", functio
     cacherSuggestion();
   }
 });
-
 window.addEventListener("DOMContentLoaded", function() {
   afficherTableau(animaux);
   document.getElementById("compteur").textContent = `${animaux.length} espèces affichées`;
