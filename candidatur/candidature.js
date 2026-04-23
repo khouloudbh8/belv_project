@@ -10,7 +10,7 @@ const animaux = [
   new Animal("Lion",               "Soin des Animaux", ["Matin Lun", "Matin Mer", "Après-midi Ven"],           3),
   new Animal("Singe",    "Sensibilisation",  ["Matin Mar", "Après-midi Mar", "Matin Sam"],           2),
   new Animal("Dromadaire",         "Espaces Verts",    ["Matin Lun", "Après-midi Mer", "Après-midi Sam"],      4),
-  new Animal("Éléphant", "Espaces Verts",    ["Matin Sam", "Après-midi Sam", "Matin Dim"],           3),
+  new Animal("Éléphant d'Afrique", "Espaces Verts",    ["Matin Sam", "Après-midi Sam", "Matin Dim"],           3),
   new Animal("Tigre du Bengale",   "Soin des Animaux", ["Matin Lun", "Après-midi Lun", "Matin Ven"],           5),
   new Animal("Zèbre",              "Sensibilisation",  ["Matin Mer", "Matin Jeu", "Après-midi Jeu"],           2),
   new Animal("Gazelle",            "Espaces Verts",    ["Après-midi Lun", "Après-midi Mar", "Matin Dim"],      1),
@@ -52,6 +52,7 @@ function ajouterLigne(animal) {
   // choisir l'urgence pour couleur de nombre de benevole
   const urgence = animal.nbBenevoles >= 4 ? "urgence-haute" :
                   animal.nbBenevoles >= 2 ? "urgence-moyenne" : "urgence-basse";
+
   tr.innerHTML = `
     <td class="td-animal">
       <span class="animal-icon">${iconeAnimal(animal.espece)}</span>
@@ -72,7 +73,7 @@ function iconeAnimal(espece) {
     "Lion"               : "🦁",
     "Singe"    : "🐒",
     "Dromadaire"         : "🐫",
-    "Éléphant" : "🐘",
+    "Éléphant d'Afrique" : "🐘",
     "Tigre du Bengale"   : "🐯",
     "Zèbre"              : "🦓",
     "Gazelle"            : "🦒",
@@ -288,6 +289,7 @@ document.getElementById("select-espece-liee").addEventListener("change", functio
     cacherSuggestion();
   }
 });
+
 window.addEventListener("DOMContentLoaded", function() {
   afficherTableau(animaux);
   document.getElementById("compteur").textContent = `${animaux.length} espèces affichées`;

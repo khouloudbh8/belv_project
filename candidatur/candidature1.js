@@ -1,11 +1,16 @@
-//Constructeur d'Objet — Modèle pour créer un Animal
+// ============================================================
+// (a) Fonction Constructeur — définition de l'objet Animal
+// ============================================================
 function Animal(espece, domaine, creneaux, nbBenevoles) {
-  this.espece      = espece;       // exp: "Lion"
-  this.domaine     = domaine;      // exp:"Soin des Animaux"
-  this.creneaux    = creneaux;     //  exp:["Matin Lun", "Après-midi Mer"]
+  this.espece      = espece;       // ex: "Lion"
+  this.domaine     = domaine;      // ex: "Soin des Animaux"
+  this.creneaux    = creneaux;     // ex: ["Matin Lun", "Après-midi Mer"]
   this.nbBenevoles = nbBenevoles;  // nombre de bénévoles nécessaires
 }
-//Base de données initiale du Zoo
+
+// ============================================================
+// (b) Collection — tableau initialisé avec des objets réels
+// ============================================================
 const animaux = [
   new Animal("Lion",               "Soin des Animaux", ["Matin Lun", "Matin Mer", "Après-midi Ven"],           3),
   new Animal("Singe",    "Sensibilisation",  ["Matin Mar", "Après-midi Mar", "Matin Sam"],           2),
@@ -18,12 +23,16 @@ const animaux = [
   new Animal("Crocodile du Nil",   "Soin des Animaux", ["Matin Mer", "Après-midi Mer", "Après-midi Ven"],      4),
   new Animal("Hyène",              "Sensibilisation",  ["Après-midi Mar", "Après-midi Mer", "Après-midi Sam"], 2),
 ];
-//Configuration du calendrier (Jours et Périodes)
 
+// ============================================================
+// Constantes jours / périodes pour le tableau des disponibilités
+// ============================================================
 const JOURS    = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
 const PERIODES = ["Matin", "Après-midi"];
-//Mise à jour dynamique du tableau HTML
 
+// ============================================================
+// (c) Génération dynamique du tableau
+// ============================================================
 function afficherTableau(liste) {
   const tbody = document.querySelector("#tableau-animaux tbody");
   tbody.innerHTML = "";
@@ -33,25 +42,33 @@ function afficherTableau(liste) {
   }
   liste.forEach(function(a) { ajouterLigne(a); });
 }
-//Création de Ligne
 
+// ============================================================
+// (d) Fonction 1 — ajouterLigne(animal)
+// ============================================================
 function ajouterLigne(animal) {
   const tbody = document.querySelector("#tableau-animaux tbody");
   const tr    = document.createElement("tr");
-//cration de crenau
+
   const creneauxHtml = animal.creneaux.map(function(c) {
     const isMatin = c.startsWith("Matin");
     return `<span class="badge ${isMatin ? 'badge-matin' : 'badge-aprem'}">${c}</span>`;
   }).join(" ");
-//creation de domaine pour couleur de l'etiquette
-  let domaineClass = ""; 
-  if (animal.domaine === "Soin des Animaux") {domaineClass = "domaine-soin";} 
-  else if (animal.domaine === "Espaces Verts") {domaineClass = "domaine-vert";} 
-  else if (animal.domaine === "Sensibilisation") {domaineClass = "domaine-sensi";} 
-  else {domaineClass = ""; }
-  // choisir l'urgence pour couleur de nombre de benevole
+
+  const domaineClass = {
+    "Soin des Animaux" : "domaine-soin",
+    "Espaces Verts"    : "domaine-vert",
+    "Sensibilisation"  : "domaine-sensi"
+  }[animal.domaine] || "";
+
   const urgence = animal.nbBenevoles >= 4 ? "urgence-haute" :
                   animal.nbBenevoles >= 2 ? "urgence-moyenne" : "urgence-basse";
+
+  // Bouton supprimer uniquement pour les lignes ajoutées manuellement
+  const btnSupprimer = animal.ajouteManuellement
+    ? `<button class="btn-supprimer" onclick="supprimerAnimal('${animal.espece}', this)">🗑️</button>`
+    : "";
+
   tr.innerHTML = `
     <td class="td-animal">
       <span class="animal-icon">${iconeAnimal(animal.espece)}</span>
@@ -60,13 +77,37 @@ function ajouterLigne(animal) {
     <td><span class="tag-domaine ${domaineClass}">${animal.domaine}</span></td>
     <td class="td-creneaux">${creneauxHtml}</td>
     <td><span class="nb-benevoles ${urgence}">${animal.nbBenevoles} bénévole${animal.nbBenevoles > 1 ? 's' : ''}</span></td>
-    <td>
+    <td class="td-actions">
       <button class="btn-postuler" onclick="postuler('${animal.espece}')">Postuler</button>
+      ${btnSupprimer}
     </td>
   `;
   tbody.appendChild(tr);
 }
 
+// ============================================================
+// Supprimer une ligne ajoutée manuellement
+// ============================================================
+function supprimerAnimal(espece, btn) {
+  // Supprimer du tableau JS
+  const index = animaux.findIndex(function(a) { return a.espece === espece; });
+  if (index !== -1) animaux.splice(index, 1);
+
+  // Supprimer la ligne du DOM
+  btn.closest("tr").remove();
+
+  // Supprimer l'option du select espèce liée
+  const select = document.getElementById("select-espece-liee");
+  const option = select.querySelector(`option[value="${espece}"]`);
+  if (option) option.remove();
+
+  // Mettre à jour le compteur
+  document.getElementById("compteur").textContent = `${animaux.length} espèces affichées`;
+}
+
+// ============================================================
+// Icône selon l'espèce
+// ============================================================
 function iconeAnimal(espece) {
   const map = {
     "Lion"               : "🦁",
@@ -83,12 +124,15 @@ function iconeAnimal(espece) {
   return map[espece] || "🐾";
 }
 
-// CAS 1 : Postuler depuis le tableau
-
+// ============================================================
+// CAS 1 — Postuler depuis le tableau
+// Pré-remplit : espèce, domaine, créneaux, motivation
+// ============================================================
 function postuler(espece) {
   const animal = animaux.find(function(a) { return a.espece === espece; });
   if (!animal) return;
 
+  // Pré-remplir le select espèce liée
   const selectEspece = document.getElementById("select-espece-liee");
   if (selectEspece) selectEspece.value = animal.espece;
 
@@ -99,7 +143,8 @@ function postuler(espece) {
   document.querySelectorAll(".case-element input[type='checkbox']").forEach(function(cb) {
     cb.checked = cb.parentElement.textContent.trim() === animal.domaine;
   });
-//ecrire lettre
+
+  // Pré-remplir motivation
   const motivation = document.getElementById("motivations");
   if (motivation) {
     motivation.value = `Je souhaite contribuer au domaine "${animal.domaine}" pour les ${animal.espece}s du zoo.`;
@@ -112,7 +157,9 @@ function postuler(espece) {
   document.querySelector(".carte-formulaire").scrollIntoView({ behavior: "smooth" });
 }
 
-
+// ============================================================
+// Pré-cocher les cases du tableau dispo selon les créneaux
+// ============================================================
 function mettreAJourTableauDispo(creneaux) {
   document.querySelectorAll(".tableau-disponibilites input[type='checkbox']").forEach(function(cb) {
     cb.checked = false;
@@ -120,8 +167,8 @@ function mettreAJourTableauDispo(creneaux) {
 
   creneaux.forEach(function(creneau) {
     const parties      = creneau.split(" ");
-    const periode      = parties[0];           
-    const jour         = parties[1];          
+    const periode      = parties[0];           // "Matin" ou "Après-midi"
+    const jour         = parties[1];           // "Lun", "Mar"...
     const periodeIndex = PERIODES.indexOf(periode);
     const jourIndex    = JOURS.indexOf(jour);
     if (periodeIndex === -1 || jourIndex === -1) return;
@@ -133,7 +180,10 @@ function mettreAJourTableauDispo(creneaux) {
     }
   });
 }
-// CAS 2 :Remplisage manuel
+
+// ============================================================
+// CAS 2 — Remplissage manuel → suggestion d'espèce
+// ============================================================
 function detecterAnimalSuggere() {
   const creneauxCoches = [];
 
@@ -150,6 +200,7 @@ function detecterAnimalSuggere() {
     return;
   }
 
+  // Trouver l'animal avec le plus de créneaux en commun
   let meilleurAnimal = null;
   let maxCommun = 0;
 
@@ -170,7 +221,9 @@ function detecterAnimalSuggere() {
   }
 }
 
+// ============================================================
 // Affiche la suggestion sous le tableau des disponibilités
+// ============================================================
 function afficherSuggestion(animal, nbCommun) {
   const zone = document.getElementById("zone-suggestion");
   const domaineClass = {
@@ -200,8 +253,10 @@ function cacherSuggestion() {
   zone.innerHTML = "";
   zone.style.display = "none";
 }
-// rechercherAnimaux(terme)
 
+// ============================================================
+// (d) Fonction 2 — rechercherAnimaux(terme)
+// ============================================================
 function rechercherAnimaux(terme) {
   terme = terme.toLowerCase().trim();
   if (terme === "") {
@@ -221,8 +276,9 @@ function rechercherAnimaux(terme) {
     `${resultats.length} résultat${resultats.length !== 1 ? 's' : ''} trouvé${resultats.length !== 1 ? 's' : ''}`;
 }
 
-// Ajouter un animal
-
+// ============================================================
+// (e) Formulaire 1 — Ajouter un animal
+// ============================================================
 document.getElementById("form-ajouter").addEventListener("submit", function(e) {
   e.preventDefault();
 
@@ -241,6 +297,7 @@ document.getElementById("form-ajouter").addEventListener("submit", function(e) {
   }
 
   const nouvelAnimal = new Animal(espece, domaine, creneauxCoches, nb);
+  nouvelAnimal.ajouteManuellement = true;
   animaux.push(nouvelAnimal);
 
   // Ajouter au select espèce liée dans le formulaire candidature
@@ -255,7 +312,9 @@ document.getElementById("form-ajouter").addEventListener("submit", function(e) {
   document.querySelector("#section-tableau").scrollIntoView({ behavior: "smooth" });
 });
 
-//Recherche en temps réel
+// ============================================================
+// (e) Formulaire 2 — Recherche en temps réel
+// ============================================================
 document.getElementById("input-recherche").addEventListener("input", function() {
   rechercherAnimaux(this.value);
 });
@@ -265,12 +324,15 @@ document.getElementById("btn-reset-recherche").addEventListener("click", functio
   rechercherAnimaux("");
 });
 
+// Écouter les cases du tableau des disponibilités → CAS 2
 document.querySelectorAll(".tableau-disponibilites input[type='checkbox']").forEach(function(cb) {
   cb.addEventListener("change", detecterAnimalSuggere);
 });
 
+// Écouter le changement du select espèce
 document.getElementById("select-espece-liee").addEventListener("change", function() {
   if (this.value === "libre") {
+    // Vider toutes les cases — le candidat remplit librement
     document.querySelectorAll(".tableau-disponibilites input[type='checkbox']").forEach(function(cb) {
       cb.checked = false;
     });
@@ -280,14 +342,20 @@ document.getElementById("select-espece-liee").addEventListener("change", functio
     });
     document.getElementById("motivations").value = "";
   } else if (this.value !== "") {
+    // Espèce réelle sélectionnée → pré-remplir comme un Postuler
     postuler(this.value);
   } else {
+    // Option vide → tout réinitialiser
     document.querySelectorAll(".tableau-disponibilites input[type='checkbox']").forEach(function(cb) {
       cb.checked = false;
     });
     cacherSuggestion();
   }
 });
+
+// ============================================================
+// Initialisation au chargement
+// ============================================================
 window.addEventListener("DOMContentLoaded", function() {
   afficherTableau(animaux);
   document.getElementById("compteur").textContent = `${animaux.length} espèces affichées`;

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidature Bénévolat - Zoo du Belvédère</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="candidature.css">
+</head>
+
+<body>
+
+  <!-- ══ HEADER ══ -->
+  <div class="grid">
+
+    <div class="box a">
+      <i class="fa-regular fa-clock fa-beat"></i>
+      <h5>Ouvert: 9h00 - 17h00</h5>
+    </div>
+
+    <div class="box a1">
+      <i class="fa-solid fa-phone fa-beat"></i>
+      <h5>+216 71897716</h5>
+    </div>
+
+    <div class="box a2"></div>
+
+    <div class="box a3">
+      <a href="https://maps.app.goo.gl/3F7mnMXSWznwf49Q8" target="_blank">
+        <img src="loc.jpg" width="50" height="50" alt="localisation">
+      </a>
+      <a href="https://maps.app.goo.gl/3F7mnMXSWznwf49Q8" target="_blank" style="text-decoration:none; color:inherit;">
+        <h5>22 Av. Des Etats Unis, Tunis 1002</h5>
+      </a>
+    </div>
+
+    <div class="box navigation">
+      <img src="logo.jpg" alt="logo Zoo Belvédère" width="100" height="100">
+      <div class="menu">
+        <a href="acceuil.html"  style="text-decoration:none; color:white;">Accueil</a>
+        <a href="animaux.html"  style="text-decoration:none; color:white;">Animaux</a>
+        <a href="#"             style="text-decoration:none; color:white;" class="active">Bénévolat</a>
+        <a href="donation.html" style="text-decoration:none; color:white;">Donations</a>
+        <a href="allnews.html"  style="text-decoration:none; color:white;">Actualités</a>
+        <a href="#"             style="text-decoration:none; color:white;">Hôtels</a>
+      </div>
+    </div>
+
+  </div>
+  <!-- ══ FIN HEADER ══ -->
+
+
+  <!-- ══ FORMULAIRE ══ -->
+  <div class="page">
+    <div class="form-card">
+      <h2>Remplissez le formulaire ci-dessous</h2>
+      <form action="https://httpbin.org/get" method="GET">
+        <div class="form-grid">
+
+          <div class="field">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" placeholder="Votre nom">
+          </div>
+
+          <div class="field">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" placeholder="Votre prénom">
+          </div>
+
+          <div class="field full">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="votre@email.com">
+          </div>
+
+          <div class="field full">
+            <label for="tel">Numéro de téléphone</label>
+            <input type="tel" id="tel" placeholder="+216 XX XXX XXX">
+          </div>
+        </form>
+          <div class="field full">
+            <label>Vos disponibilités</label>
+            <div class="table-container">
+              <table class="availability-table">
+                <thead>
+                  <tr>
+                    <th>Créneaux</th>
+                    <th>Lun</th>
+                    <th>Mar</th>
+                    <th>Mer</th>
+                    <th>Jeu</th>
+                    <th>Ven</th>
+                    <th>Sam</th>
+                    <th>Dim</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Matin</td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                  </tr>
+                  <tr>
+                    <td>Après-midi</td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="field full">
+            <label for="motivations">Pourquoi souhaitez-vous nous rejoindre ?</label>
+            <textarea id="motivations" rows="4" placeholder="Parlez-nous de votre passion pour les animaux..."></textarea>
+          </div>
+
+          <div class="field full">
+            <label>Domaines d'intérêt</label>
+            <div class="checkbox-group">
+              <label class="check-item"><input type="checkbox"> Soin des Animaux</label>
+              <label class="check-item"><input type="checkbox"> Sensibilisation</label>
+              <label class="check-item"><input type="checkbox"> Espaces Verts</label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn">🔒 Envoyer ma candidature</button>
+
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- ══ FIN FORMULAIRE ══ -->
+
+
+  <!-- ══ FOOTER ══ -->
+  <div class="footer">
+    <div class="footer-grid">
+
+      <div class="footer-col about">
+        <img src="logo.jpg" width="120" alt="logo Zoo Belvédère">
+        <p style="text-align:center">
+          Une aventure extraordinaire au cœur de la nature sauvage.
+          Depuis 1985, nous nous engageons pour la conservation
+          des espèces et l'éducation environnementale.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h2>Venir</h2>
+        <p><i class="fa-solid fa-location-dot"></i> Allée de la Kobba, Tunis</p>
+        <p>Ouvert toute l'année</p>
+      </div>
+
+      <div class="footer-col">
+        <h2>Découvrir</h2>
+        <p>Nos animaux</p>
+        <p>Nos hôtels</p>
+        <p>Nos espaces</p>
+      </div>
+
+      <div class="footer-col">
+        <h2>Contact</h2>
+        <p>
+          <i class="fa-brands fa-facebook"></i>
+          <a href="https://www.facebook.com/profile.php?id=100092726020722" target="_blank">Belvédère</a>
+        </p>
+        <p>
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:contact@belvedere-zoo.tn">contact@belvedere-zoo.tn</a>
+        </p>
+        <p><i class="fa-solid fa-phone"></i> +216 71897716</p>
+      </div>
+
+    </div>
+
+    <div class="copy-right">
+      © 2026 Zoo du Belvédère Tunis. Tous droits réservés.
+    </div>
+  </div>
+  <!-- ══ FIN FOOTER ══ -->
+
+</body>
+</html>

@@ -1,0 +1,296 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --teal: #00A1A6;
+  --dark: #1E1E1E;
+  --white: #FFFFFF;
+  --gray: #757575;
+  --light-gray: #B3B3B3;
+}
+html {
+  scroll-behavior: smooth;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(40, 1fr);
+  grid-auto-rows: auto;
+  margin: auto;
+}
+
+.box {
+  background: #ffffff;
+  color: inherit;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.a, .a1, .a2, .a3 {
+  grid-column: span 10;
+  padding: 8px;
+}
+
+.navigation {
+  grid-column: span 40;
+  background: #00A1A6;
+  padding: 10px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  gap: 40px;
+}
+
+.menu a.active {
+  font-weight: bold;
+  text-decoration: underline !important;
+  color: inherit;
+}
+
+.menu a:hover {
+  color: #ff9900 !important;
+  transform: scale(1.05);
+}
+
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--white); /* Fond blanc pur */
+}
+
+/* On supprime ou on vide les ::before et ::after qui créaient du grain et des lignes */
+.bg::before, .bg::after {
+  content: none;
+}
+/* ── LAYOUT ── */
+.page {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 80px;
+}
+/* ── CÔTÉ DROIT : FORMULAIRE ── */
+/* ── CÔTÉ DROIT : FORMULAIRE ── */
+.form-card {
+  /* Fond teal très transparent */
+  background: rgba(0, 161, 166, 0.08); 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  /* Bordure teal semi-transparente */
+  border: 1px solid rgba(0, 161, 166, 0.2);
+  border-radius: 20px;
+  padding: 44px 40px;
+  width: 100%;
+  max-width: 700px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Ombre douce pour décoller du blanc */
+}
+
+.form-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  color: var(--teal); /* Texte en Teal */
+  margin-bottom: 28px;
+}
+
+.form-card h2 span {
+  color: var(--gray); /* Sous-titre en gris pour la lisibilité */
+}
+
+.field label {
+  color: var(--teal); /* Labels en Teal */
+  opacity: 0.8;
+}
+
+.field input {
+  width: 100%;
+  padding: 13px 16px;
+  /* Input légèrement teinté */
+  background: rgba(0, 161, 166, 0.05);
+  border: 1px solid rgba(0, 161, 166, 0.15);
+  border-radius: 10px;
+  color: var(--dark); /* Texte écrit en sombre pour être lisible sur blanc */
+  outline: none;
+  transition: all .2s;
+}
+
+.field input::placeholder {
+  color: var(--light-gray);
+}
+.btn {
+  grid-column: 1 / -1;
+  margin-top: 6px;
+  padding: 15px;
+  background: var(--teal); /* Bouton Teal */
+  border: none;
+  border-radius: 10px;
+  color: var(--white);
+  cursor: pointer;
+  transition: transform .1s, opacity 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.secure {
+  color: var(--gray); /* Texte de sécurité en gris */
+}
+.btn:active {
+  transform: scale(.98);
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.field.full {
+    grid-column: 1 / -1;
+}
+
+/* Style spécifique pour Textarea */
+textarea {
+    width: 100%;
+    padding: 13px 16px;
+    background: rgba(0, 161, 166, 0.05);
+    border: 1px solid rgba(0, 161, 166, 0.15);
+    border-radius: 10px;
+    color: var(--dark);
+    font-family: inherit;
+    resize: vertical;
+    outline: none;
+}
+
+/* Style du Tableau de disponibilités */
+.table-container {
+    overflow-x: auto;
+    margin-top: 5px;
+}
+
+.availability-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+.availability-table th, .availability-table td {
+    border: 1px solid rgba(0, 161, 166, 0.1);
+    padding: 10px;
+    text-align: center;
+}
+
+.availability-table th {
+    background: var(--teal);
+    color: white;
+    font-weight: 500;
+}
+
+.availability-table td:first-child {
+    font-weight: bold;
+    color: var(--teal);
+    background: rgba(0, 161, 166, 0.05);
+}
+
+/* Cases à cocher personnalisées (couleur teal) */
+input[type="checkbox"] {
+    accent-color: var(--teal);
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* Groupe de cases à cocher pour Domaines d'intérêt */
+.checkbox-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--dark);
+    cursor: pointer;
+}
+.footer {
+  background: #159A9C;
+  color: white;
+  padding: 80px 100px 40px 100px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 80px;
+}
+
+.footer-col h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.footer-col p {
+  margin: 10px 0;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.footer-col i { margin-right: 10px; }
+
+.footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer a:hover { color: #ff9900; }
+
+.about img { margin-bottom: 20px; }
+
+.copy-right {
+  border-top: 1px solid rgba(255,255,255,0.5);
+  margin-top: 60px;
+  padding-top: 30px;
+  font-size: 22px;
+}
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  .page {
+    grid-template-columns: 1fr;
+    padding: 40px 24px;
+    gap: 40px;
+    align-items: start;
+    padding-top: 80px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(3, auto);
+  }
+
+  .bg::after {
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
